@@ -25,7 +25,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
     render: (args) => {
         return (
-            <div className="flex flex-col gap-5">
+            <div className="grid grid-cols-2 gap-5">
                 <Alert variant="primary-light" {...args} />
                 <Alert variant="secondary-light" {...args} />
                 <Alert variant="success-light" {...args} />
@@ -34,8 +34,10 @@ export const Default: Story = {
                 <Alert variant="info-light" {...args} />
                 <Alert variant="primary-solid" {...args} />
                 <Alert variant="primary-light" alertIcon {...args} />
+                <Alert variant="secondary-light" alertIcon {...args} />
                 <Alert variant="primary-outline" {...args} />
                 <Alert variant="danger-outline" {...args} />
+                <Alert variant="danger-outline" customButton={<button className="bg-white-dark text-white p-2 rounded">Button</button>} {...args} />
             </div>
         );
     },

@@ -717,3 +717,7 @@ img.dark-img {
 .dark img.dark-img {
     @apply !block;
 }
+
+.sbdocs-content {
+    @apply mx-auto !max-w-[1920px];
+}

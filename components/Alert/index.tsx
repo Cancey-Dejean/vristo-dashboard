@@ -6,9 +6,21 @@ import IconBellBing from '../icon/icon-bell-bing';
 import IconSettings from '../icon/icon-settings';
 
 type AlertProps = {
+    /**
+     * Description goes here
+     */
     className?: string;
+    /**
+     * Description goes here
+     */
     variant?: 'primary-light' | 'primary-solid' | 'primary-outline' | 'secondary-light' | 'success-light' | 'warning-light' | 'danger-light' | 'info-light' | 'danger-outline';
+    /**
+     * Description goes here
+     */
     alertIcon?: React.ReactNode;
+    /**
+     * Description goes here
+     */
     customButton?: React.ReactNode;
 };
 
@@ -38,11 +50,13 @@ export default function Alert({ className, variant, alertIcon, customButton }: A
                 <div
                     className={cn('alert-icon flex w-16 items-center justify-center', {
                         'bg-primary': variant === 'primary-light',
+                        'bg-secondary': variant === 'secondary-light',
                         'text-white': variant === 'primary-solid',
                         'text-white-dark': variant === 'primary-outline',
                     })}
                 >
                     {variant === 'primary-light' ? <IconBellBing className="w-6 text-white" /> : null}
+                    {variant === 'secondary-light' ? <IconBellBing className="w-6 text-white" /> : null}
                     {variant === 'primary-solid' ? <IconSettings className="w-6 text-white" /> : null}
                     {variant === 'primary-outline' ? <IconX className="w-6 text-white" /> : null}
                 </div>
@@ -53,7 +67,7 @@ export default function Alert({ className, variant, alertIcon, customButton }: A
                     <strong>Primary!</strong> Lorem Ipsum is simply dummy text of the printing.
                 </p>
 
-                {customButton ? <div>CTA Button</div> : null}
+                {customButton ? customButton : null}
 
                 <button type="button" className="hover:opacity-80" onClick={handleCloseAlert} aria-label="Close Alert box">
                     <IconX className="h-[20px]" />
