@@ -13,11 +13,29 @@ type AlertProps = {
     /**
      * Description goes here
      */
-    variant?: 'primary-light' | 'primary-solid' | 'primary-outline' | 'secondary-light' | 'success-light' | 'warning-light' | 'danger-light' | 'info-light' | 'danger-outline';
+    variant?:
+        | 'primary-solid'
+        | 'secondary-solid'
+        | 'success-solid'
+        | 'warning-solid'
+        | 'danger-solid'
+        | 'info-solid'
+        | 'primary-light'
+        | 'secondary-light'
+        | 'success-light'
+        | 'warning-light'
+        | 'danger-light'
+        | 'info-light'
+        | 'primary-outline'
+        | 'secondary-outline'
+        | 'success-outline'
+        | 'warning-outline'
+        | 'danger-outline'
+        | 'info-outline';
     /**
      * Description goes here
      */
-    alertIcon?: React.ReactNode;
+    alertIcon?: boolean | React.ReactNode;
     /**
      * Description goes here
      */
@@ -35,36 +53,54 @@ export default function Alert({ className, variant, alertIcon, customButton }: A
         <div
             className={cn('flex items-stetch rounded border text-white-dark overflow-hidden', className, {
                 hidden: !alertVisible,
+                // Solids
+                'text-white bg-primary': variant === 'primary-solid',
+                'text-white bg-secondary': variant === 'secondary-solid',
+                'text-white bg-success': variant === 'success-solid',
+                'text-white bg-warning': variant === 'warning-solid',
+                'text-white bg-danger': variant === 'danger-solid',
+                'text-white bg-info': variant === 'info-solid',
+                // End of Solids
+
+                // Lights
                 'text-primary bg-primary-light dark:bg-primary-dark-light': variant === 'primary-light',
                 'text-secondary bg-secondary-light dark:bg-secondary-dark-light': variant === 'secondary-light',
                 'text-success bg-success-light dark:bg-success-dark-light': variant === 'success-light',
                 'text-warning bg-warning-light dark:bg-warning-dark-light': variant === 'warning-light',
                 'text-danger bg-danger-light dark:bg-danger-dark-light': variant === 'danger-light',
                 'text-info bg-info-light dark:bg-info-dark-light': variant === 'info-light',
-                'text-white bg-primary': variant === 'primary-solid',
+                // End of Lights
+
+                // Outlines
                 'border-primary': variant === 'primary-outline',
+                'border-secondary': variant === 'secondary-outline',
+                'border-success': variant === 'success-outline',
+                'border-warning': variant === 'warning-outline',
                 'border-danger': variant === 'danger-outline',
+                'border-info': variant === 'info-outline',
+                // End of Outlines
             })}
         >
             {alertIcon ? (
                 <div
-                    className={cn('alert-icon flex w-16 items-center justify-center', {
+                    className={cn('alert-icon flex w-16 items-center justify-center text-white [&_svg]:w-6', {
+                        // Icon Light
                         'bg-primary': variant === 'primary-light',
                         'bg-secondary': variant === 'secondary-light',
-                        'text-white': variant === 'primary-solid',
-                        'text-white-dark': variant === 'primary-outline',
+                        'bg-success': variant === 'success-light',
+                        'bg-warning': variant === 'warning-light',
+                        'bg-danger': variant === 'danger-light',
+                        'bg-info': variant === 'info-light',
+                        // End of Icon Light
                     })}
                 >
-                    {variant === 'primary-light' ? <IconBellBing className="w-6 text-white" /> : null}
-                    {variant === 'secondary-light' ? <IconBellBing className="w-6 text-white" /> : null}
-                    {variant === 'primary-solid' ? <IconSettings className="w-6 text-white" /> : null}
-                    {variant === 'primary-outline' ? <IconX className="w-6 text-white" /> : null}
+                    {alertIcon === true ? alertIcon : <IconSettings />}
                 </div>
             ) : null}
 
             <div className="flex items-center w-full justify-between p-3.5 gap-[14px]">
-                <p className="text-[14px]">
-                    <strong>Primary!</strong> Lorem Ipsum is simply dummy text of the printing.
+                <p className="text-[14px] font-light">
+                    <strong className="font-bold">Primary!</strong> Lorem Ipsum is simply dummy text of the printing.
                 </p>
 
                 {customButton ? customButton : null}
