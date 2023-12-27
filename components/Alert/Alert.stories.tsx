@@ -23,7 +23,6 @@ const meta = {
     tags: ['autodocs'],
     args: {
         variant: 'primary',
-        alertIcon: <IconSettings />,
         text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, adipisci!',
     },
     argTypes: {
