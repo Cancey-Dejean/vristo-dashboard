@@ -3,6 +3,8 @@ import 'react-perfect-scrollbar/dist/css/styles.css';
 import '../styles/tailwind.css';
 import { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
+import Alert from '@/components/Alert';
+import IconBellBing from '@/components/icon/icon-bell-bing';
 
 export const metadata: Metadata = {
     title: {
@@ -21,7 +23,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en">
             <body className={nunito.variable}>
-                <ProviderComponent>{children}</ProviderComponent>
+                <ProviderComponent>
+                    <div className="m-[400px] flex flex-col gap-5">
+                        <Alert variant="primary" alertIcon={<IconBellBing />} />
+                        <Alert variant="secondary" alertIcon={<IconBellBing />} />
+                        <Alert variant="success" alertIcon={<IconBellBing />} />
+                        <Alert variant="warning" alertIcon={<IconBellBing />} />
+                        <Alert variant="danger" alertIcon={<IconBellBing />} />
+                        <Alert variant="info" alertIcon={<IconBellBing />} />
+                    </div>
+                    {children}
+                </ProviderComponent>
             </body>
         </html>
     );

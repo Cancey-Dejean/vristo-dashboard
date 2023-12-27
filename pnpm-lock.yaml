@@ -116,6 +116,9 @@ dependencies:
   react-i18next:
     specifier: ^12.1.5
     version: 12.3.1(i18next@22.5.1)(react-dom@18.2.0)(react@18.2.0)
+  react-icons:
+    specifier: ^4.12.0
+    version: 4.12.0(react@18.2.0)
   react-images-uploading:
     specifier: ^3.1.7
     version: 3.1.7(react-dom@18.2.0)(react@18.2.0)
@@ -239,7 +242,7 @@ devDependencies:
     specifier: ^7.6.6
     version: 7.6.6
   tailwindcss:
-    specifier: ^3.3.2
+    specifier: ^3.4.0
     version: 3.4.0
 
 packages:
@@ -10065,6 +10068,14 @@ packages:
       i18next: 22.5.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /react-icons@4.12.0(react@18.2.0):
+    resolution: {integrity: sha512-IBaDuHiShdZqmfc/TwHu6+d6k2ltNCf3AszxNmjJc1KUfXdEeRJOKyNvLmAHaarhzGmTSVygNdyu8/opXv2gaw==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-images-uploading@3.1.7(react-dom@18.2.0)(react@18.2.0):

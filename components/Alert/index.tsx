@@ -1,8 +1,8 @@
 'use client';
-import { useState } from 'react';
-import IconX from '../icon/icon-x';
+import React, { useState } from 'react';
+import { IoCloseOutline } from 'react-icons/io5';
+
 import { cn } from '@/libs/utils';
-import IconBellBing from '../icon/icon-bell-bing';
 import IconSettings from '../icon/icon-settings';
 
 type AlertProps = {
@@ -13,36 +13,19 @@ type AlertProps = {
     /**
      * Description goes here
      */
-    variant?:
-        | 'primary-solid'
-        | 'secondary-solid'
-        | 'success-solid'
-        | 'warning-solid'
-        | 'danger-solid'
-        | 'info-solid'
-        | 'primary-light'
-        | 'secondary-light'
-        | 'success-light'
-        | 'warning-light'
-        | 'danger-light'
-        | 'info-light'
-        | 'primary-outline'
-        | 'secondary-outline'
-        | 'success-outline'
-        | 'warning-outline'
-        | 'danger-outline'
-        | 'info-outline';
+    text?: React.ReactNode;
+    /**
+     * Description goes here
+     */
+    variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info';
+
     /**
      * Description goes here
      */
     alertIcon?: boolean | React.ReactNode;
-    /**
-     * Description goes here
-     */
-    customButton?: React.ReactNode;
 };
 
-export default function Alert({ className, variant, alertIcon, customButton }: AlertProps) {
+export default function Alert({ className, variant, alertIcon, text }: AlertProps) {
     const [alertVisible, setAlertVisible] = useState(true);
 
     const handleCloseAlert = () => {
@@ -51,62 +34,37 @@ export default function Alert({ className, variant, alertIcon, customButton }: A
 
     return (
         <div
-            className={cn('flex items-stetch rounded border text-white-dark overflow-hidden', className, {
+            className={cn('flex items-stetch rounded text-white-dark overflow-hidden shadow-lg', className, {
                 hidden: !alertVisible,
-                // Solids
-                'text-white bg-primary': variant === 'primary-solid',
-                'text-white bg-secondary': variant === 'secondary-solid',
-                'text-white bg-success': variant === 'success-solid',
-                'text-white bg-warning': variant === 'warning-solid',
-                'text-white bg-danger': variant === 'danger-solid',
-                'text-white bg-info': variant === 'info-solid',
-                // End of Solids
 
-                // Lights
-                'text-primary bg-primary-light dark:bg-primary-dark-light': variant === 'primary-light',
-                'text-secondary bg-secondary-light dark:bg-secondary-dark-light': variant === 'secondary-light',
-                'text-success bg-success-light dark:bg-success-dark-light': variant === 'success-light',
-                'text-warning bg-warning-light dark:bg-warning-dark-light': variant === 'warning-light',
-                'text-danger bg-danger-light dark:bg-danger-dark-light': variant === 'danger-light',
-                'text-info bg-info-light dark:bg-info-dark-light': variant === 'info-light',
-                // End of Lights
-
-                // Outlines
-                'border-primary': variant === 'primary-outline',
-                'border-secondary': variant === 'secondary-outline',
-                'border-success': variant === 'success-outline',
-                'border-warning': variant === 'warning-outline',
-                'border-danger': variant === 'danger-outline',
-                'border-info': variant === 'info-outline',
-                // End of Outlines
+                'text-blue-900 bg-blue-200 dark:text-blue-100 dark:bg-slate-900': variant === 'primary',
+                'text-violet-900 bg-violet-200 dark:bg-violet-900 dark:text-violet-200': variant === 'secondary',
+                'text-green-900 bg-green-200 dark:bg-green-900 dark:text-green-200': variant === 'success',
+                'text-yellow-900 bg-yellow-200  dark:bg-yellow-900 dark:text-yellow-200': variant === 'warning',
+                'text-red-900 bg-red-200 dark:bg-red-900 dark:text-red-200': variant === 'danger',
+                'text-gray-700 bg-gray-200 dark:bg-gray-700 dark:text-gray-200': variant === 'info',
             })}
         >
             {alertIcon ? (
                 <div
-                    className={cn('alert-icon flex w-16 items-center justify-center text-white [&_svg]:w-6', {
-                        // Icon Light
-                        'bg-primary': variant === 'primary-light',
-                        'bg-secondary': variant === 'secondary-light',
-                        'bg-success': variant === 'success-light',
-                        'bg-warning': variant === 'warning-light',
-                        'bg-danger': variant === 'danger-light',
-                        'bg-info': variant === 'info-light',
-                        // End of Icon Light
+                    className={cn('alert-icon flex w-12 items-center justify-center [&_svg]:size-6', {
+                        'bg-blue-900 text-blue-200 dark:bg-slate-900': variant === 'primary',
+                        'bg-violet-900 text-violet-200': variant === 'secondary',
+                        'bg-green-900 text-green-200 ': variant === 'success',
+                        'bg-yellow-900 text-yellow-200 ': variant === 'warning',
+                        'bg-red-900 text-red-200': variant === 'danger',
+                        'bg-gray-700 text-gray-200': variant === 'info',
                     })}
                 >
                     {alertIcon === true ? alertIcon : <IconSettings />}
                 </div>
             ) : null}
 
-            <div className="flex items-center w-full justify-between p-3.5 gap-[14px]">
-                <p className="text-[14px] font-light">
-                    <strong className="font-bold">Primary!</strong> Lorem Ipsum is simply dummy text of the printing.
-                </p>
+            <div className="flex items-center w-full justify-between gap-3">
+                <div className="text-sm md:text-base p-3.5 dark:pl-0">{text || <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, adipisci!</p>}</div>
 
-                {customButton ? customButton : null}
-
-                <button type="button" className="hover:opacity-80" onClick={handleCloseAlert} aria-label="Close Alert box">
-                    <IconX className="h-[20px]" />
+                <button type="button" className="w-10 h-full flex items-center justify-center shrink-0 hover:opacity-80 group" onClick={handleCloseAlert} aria-label="Close Alert box">
+                    <IoCloseOutline className="size-5  group-hover:rotate-180" />
                 </button>
             </div>
         </div>
