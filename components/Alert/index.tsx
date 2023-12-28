@@ -26,7 +26,7 @@ type AlertProps = {
 };
 
 export default function Alert({ className, variant, alertIcon, text }: AlertProps) {
-    const [alertVisible, setAlertVisible] = useState(true);
+    const [alertVisible, setAlertVisible] = useState<boolean>(true);
 
     const handleCloseAlert = () => {
         setAlertVisible(false);
@@ -63,8 +63,8 @@ export default function Alert({ className, variant, alertIcon, text }: AlertProp
             <div className="flex items-center w-full justify-between">
                 <div className="text-sm md:text-base p-3.5 dark:pl-0">{text || <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, adipisci!</p>}</div>
 
-                <button type="button" className="w-10 h-full flex items-center justify-center shrink-0 hover:opacity-80 group" onClick={handleCloseAlert} aria-label="Close Alert box">
-                    <IoCloseOutline className="size-5 group-hover:rotate-180" />
+                <button type="button" className="w-10 h-full flex items-center justify-center shrink-0 hover:opacity-80" onClick={handleCloseAlert} aria-label="Close Alert box">
+                    <IoCloseOutline className="size-5" />
                 </button>
             </div>
         </div>

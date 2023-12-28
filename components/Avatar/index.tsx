@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import { cva } from 'class-variance-authority';
 import { cn } from '@/libs/utils';
-import 'tippy.js/dist/tippy.css';
-import './Avatar.css';
 
 const avatar = cva('h-auto rounded-full w-auto object-cover ring-2 ring-white text-base flex items-center justify-center gap-2 duration-300 ease-in-out', {
     variants: {
@@ -10,7 +8,7 @@ const avatar = cva('h-auto rounded-full w-auto object-cover ring-2 ring-white te
             'x-large': 'size-16 lg:size-20 text-2xl',
             large: 'size-14 lg:size-16 text-xl',
             medium: 'size-12 lg:size-14 text-lg',
-            small: '!size-12',
+            small: 'size-10 lg:size-12',
         },
     },
     defaultVariants: {

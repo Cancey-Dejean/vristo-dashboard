@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Avatar from './';
+import Badges from './';
 
 const meta = {
-    title: 'Components/Avatar',
-    component: Avatar,
+    title: 'Components/Badges',
+    component: Badges,
     tags: ['autodocs'],
     decorators: [
         (Story) => (
@@ -13,28 +13,28 @@ const meta = {
         ),
     ],
     args: {
-        imgSrc: 'https://dummyimage.com/80x80.png/dddddd/ffffff',
-        name: 'Name',
-        size: 'medium',
-        notification: false,
+        // imgSrc: 'https://dummyimage.com/80x80.png/dddddd/ffffff',
+        // name: 'Name',
+        // size: 'medium',
+        // notification: false,
     },
     argTypes: {
-        size: {
-            control: {
-                type: 'select',
-            },
-        },
+        // size: {
+        //     control: {
+        //         type: 'select',
+        //     },
+        // },
     },
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof Avatar>;
+} satisfies Meta<typeof Badges>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     render: (args) => {
-        return <Avatar {...args} />;
+        return <Badges {...args} />;
     },
 };
