@@ -24,14 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="en">
             <body className={nunito.variable}>
                 <ProviderComponent>
-                    <div className="m-[400px] flex flex-col gap-5">
-                        <Alert variant="primary" alertIcon={<IconBellBing />} />
-                        <Alert variant="secondary" alertIcon={<IconBellBing />} />
-                        <Alert variant="success" alertIcon={<IconBellBing />} />
-                        <Alert variant="warning" alertIcon={<IconBellBing />} />
-                        <Alert variant="danger" alertIcon={<IconBellBing />} />
-                        <Alert variant="info" alertIcon={<IconBellBing />} />
-                    </div>
+                    <div className="m-[400px] flex flex-col gap-5">Copntent</div>
                     {children}
                 </ProviderComponent>
             </body>

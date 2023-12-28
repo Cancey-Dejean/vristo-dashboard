@@ -29,6 +29,7 @@
     "@whitespace/storybook-addon-html": "^5.1.6",
     "@x1mrdonut1x/nouislider-react": "^3.4.3",
     "apexcharts": "^3.37.1",
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "easymde": "^2.18.0",
     "eslint": "8.32.0",

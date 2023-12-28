@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
 import Alert from './';
 import IconBellBing from '../icon/icon-bell-bing';
-import IconSettings from '../icon/icon-settings';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -41,6 +39,7 @@ export const Default: Story = {
         return (
             <div className="flex flex-col gap-4">
                 <Alert variant="primary" {...args} />
+                <Alert variant="primary" alertIcon={<IconBellBing />} />
             </div>
         );
     },
